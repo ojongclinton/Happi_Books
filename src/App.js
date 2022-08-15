@@ -11,6 +11,7 @@ import Search from './Components/Search/Search'
 
 
 
+
 let NotFound = ()=>{
     return(
         <div>
@@ -26,7 +27,7 @@ let App=()=>{
             <Header setSearch={setSearch} search={search}/>
             <div className='routes'>
                 <Routes>
-                    <Route path='/Search' element = {<Search searchTerm={search}/>}/>
+                    <Route path='/Search' element = {<Search searchTerm={search} setSearch={setSearch}/>}/>
                     <Route path='/' element={<Home/>}/>
                     <Route path='/categories' element={Categories}/>
                     <Route path='/authors' element={Authors}/>

@@ -1,9 +1,8 @@
-import React,{useEffect,useState} from 'react'
+import React from 'react'
  import { useGetBooksQuery } from '../../api/booksApi'
 import useStyles from './style'
 import { Card, CardContent, CardMedia, Grid, Rating, Typography,Chip } from '@mui/material';
 import { Spinner } from '../Spinner';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {useNavigate} from "react-router-dom"
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
@@ -21,15 +20,12 @@ function Home() {
 const navigate = useNavigate()
 const classes = useStyles();
 let content
-const [bookList,setBookList] = useState([])
+
 
 const {data:books =[],
     isLoading,
-    isFetching,
     isSuccess,
     isError,
-    error,
-    refetch
     } = useGetBooksQuery()
 
 if (isLoading){
@@ -73,7 +69,7 @@ else if(isSuccess){
 
 }
 else if(isError){
-    content = <div style={{height:'70vh'}}><h1 style={{display:'flex',justifyContent:'space-around',color:'#290000'}}>An error occured</h1><p style={{display:'flex',justifyContent:'space-around',}}>{error.error}</p></div>
+    content = <div style={{height:'70vh'}}><h1 style={{display:'flex',justifyContent:'space-around',color:'#290000'}}>An error occured</h1><p style={{display:'flex',justifyContent:'space-around',}}></p></div>
 }
     return (
     <h1>{content}</h1>
@@ -81,15 +77,3 @@ else if(isError){
 }
 
 export default Home
-
-// const books =[
-//     {name:'Moses in the burning bush',rating:4.3,id:nanoid(),cover:"https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"},
-//     {name:'William rescuing Moses',rating:5,id:nanoid(),cover:"https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"},
-//     {name:'The missen dream',rating:5,id:nanoid(),cover:"https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"},
-//     {name:'the convicted begger',rating:5,id:nanoid(),cover:"https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"},
-//     {name:'wiring the wired',rating:5,id:nanoid(),cover:"https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"},
-//     {name:'the dark charcoal',rating:5,id:nanoid(),cover:"https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"},
-//     {name:'he who eats',rating:5,id:nanoid(),cover:"https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"},
-//     {name:'soul reaper',rating:5,id:nanoid(),cover:"https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"}
-    
-// ];

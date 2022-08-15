@@ -7,20 +7,17 @@ import useStyles from './style'
 
 
 
-const SearchResults = ({results})=>{
-    results.forEach(result=>{
-        console.log(result)
-    })
-}
-
-
-
 let Header =({setSearch,search})=>{
     const navigate = useNavigate()
+    const [val,setVal] = useState("")
 
     const SearchHandler =(e)=>{
-        const FromatedSearch = search.split(' ').join('+')
+        const value = e.target.value
+        setVal(value)
+        const FromatedSearch = value.split(' ').join('+')
+        console.log(FromatedSearch)
         setSearch(FromatedSearch)
+        
 
     }
 
@@ -41,7 +38,7 @@ let Header =({setSearch,search})=>{
                     <div className={classes.searchIcon}>
                         <SearchIcon/>
                     </div>
-                    <InputBase placeholder="Search…" value={search} classes={{ root: classes.inputRoot, input: classes.inputInput }} onChange={SearchHandler} onClick={()=>{navigate('/Search')} }/>
+                    <InputBase placeholder="Search…" value={val} classes={{ root: classes.inputRoot, input: classes.inputInput }} onChange={SearchHandler} onClick={()=>{navigate('/Search')} }/>
                 </div>
             </Box>
         </Toolbar>

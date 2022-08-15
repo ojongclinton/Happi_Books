@@ -1,8 +1,8 @@
 import {createApi,fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 const happiBooksHeaders = {
-    'X-RapidAPI-Key': '1e10034f34msh8d612ecfdae8967p173ec0jsnaaaf135025ae',
-    'X-RapidAPI-Host': 'hapi-books.p.rapidapi.com'
+    'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI1,
+    'X-RapidAPI-Host': process.env.REACT_APP_RAPIDAPI2
 }
 
 const baseUrl = 'https://hapi-books.p.rapidapi.com';
